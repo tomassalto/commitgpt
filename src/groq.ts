@@ -1,7 +1,7 @@
 import Groq from 'groq-sdk';
 import { validateApiKey } from './config';
 
-const MODEL = 'llama3-8b-8192';
+const MODEL = 'llama-3.1-8b-instant';
 
 function buildPrompt(diff: string): string {
   return `You are an expert software engineer. Analyze the following git diff and generate a single conventional commit message.

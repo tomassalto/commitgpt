@@ -1,11 +1,11 @@
 import { execSync } from 'child_process';
 
-const MAX_DIFF_CHARS = 24_000;
+const MAX_DIFF_CHARS = 12_000;
 
 export function getStagedDiff(): string {
   let diff: string;
   try {
-    diff = execSync('git diff --staged', { encoding: 'utf-8' });
+    diff = execSync('git diff --staged', { encoding: 'utf-8', maxBuffer: 10 * 1024 * 1024 });
   } catch {
     throw new Error('Failed to run git. Make sure you are inside a git repository.');
   }
