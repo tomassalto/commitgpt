@@ -1,15 +1,14 @@
-import { spawnSync } from 'child_process';
+import { execSync } from 'child_process';
 
 const MAX_DIFF_CHARS = 24_000;
 
 export function getStagedDiff(): string {
-  const result = spawnSync('git', ['diff', '--staged'], { encoding: 'utf-8' });
-
-  if (result.error || result.status !== 0) {
+  let diff: string;
+  try {
+    diff = execSync('git diff --staged', { encoding: 'utf-8' });
+  } catch {
     throw new Error('Failed to run git. Make sure you are inside a git repository.');
   }
-
-  const diff = result.stdout;
 
   if (!diff || diff.trim() === '') {
     throw new Error(
