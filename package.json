@@ -1,5 +1,5 @@
 {
-  "name": "commitgpt",
+  "name": "@tomassalto/commitgpt",
   "version": "1.0.0",
   "description": "AI-powered conventional commit message generator using Groq",
   "main": "dist/index.js",
